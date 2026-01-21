@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
@@ -15,7 +15,7 @@ const Navbar = () => {
     return (
         <nav className="fixed w-full z-50 top-0 left-0 px-6 py-4">
             <div className="max-w-7xl mx-auto glass rounded-2xl px-6 py-3 flex justify-between items-center">
-                <a href="#" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <a href="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                     DEV.<span className="text-white">FUTURE</span>
                 </a>
                 {/* Desktop Menu */}
