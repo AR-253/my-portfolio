@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Feane Clone - Navbar</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+  overflow-x: hidden;
+}
+
+     html {
+    scroll-behavior: smooth;
+  }
+    .navbar-custom {
+      background-color: black;
+    }
+
+    .navbar-brand {
+      font-size: 28px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .navbar-brand:hover {
+      color: orange;
+    }
+
+    .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin-right: 15px;
+    }
+
+    .nav-link:hover {
+      color: orange !important;
+    }
+
+    .btn-order {
+      background-color: orange;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-weight: bold;
+      border-radius: 20px;
+    }
+
+    .btn-order:hover {
+      background-color: darkorange;
+    }
+  .carousel-indicators [data-bs-target] {
+  background-color: white;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  opacity: 0.5;
+  margin: 0 5px;
+  border: none;
+}
+
+.carousel-indicators .active {
+  background-color: orange;
+  opacity: 1;
+}
+
+.btn-order {
+  background-color: #f78e1e;
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-radius: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-order:hover {
+  background-color: #d66f00;
+}
+
+.discount-card p {
+  font-size: 1rem;
+}
+.btn-outline-orange {
+    border: 2px solid orange;
+    color: orange;
+    font-weight: 600;
+    border-radius: 25px;
+    padding: 8px 20px;
+    transition: 0.3s;
+  }
+  .btn-outline-orange:hover,
+  .btn-outline-orange.active {
+    background-color: orange;
+    color: white;
+  }
+  .btn-sm.btn-order {
+    background-color: orange;
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .btn-sm.btn-order:hover {
+    background-color: darkorange;
+    color: white;
+  }
+  .card-img-top {
+  height: 200px; /* or 250px, depending on your design */
+  object-fit: cover;
+}
+
+.card, .discount-card {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important; /* Stronger shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover, .discount-card:hover {
+  transform: translateY(-5px); /* Subtle lift effect on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+.carousel-item {
+  padding: 2rem 0;
+}
+
+ .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: black ; 
+    border-radius: 50%;
+    background-size: 60% 60%;
+    padding: 10px;
+  }
+
+  /* Optional: Adjust hover effect */
+  .carousel-control-prev:hover .carousel-control-prev-icon,
+  .carousel-control-next:hover .carousel-control-next-icon {
+    background-color: orange; /* darker shade on hover */
+  }
+
+  /* Modal customization */
+  .modal-food-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content {
+    border-radius: 15px;
+    border: none;
+  }
+  
+  .modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .modal-title {
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .modal-body {
+    padding: 30px;
+  }
+  
+  .modal-footer {
+    border-top: none;
+    justify-content: center;
+  }
+  
+  .food-details {
+    margin-bottom: 20px;
+  }
+  
+  .food-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: orange;
+  }
+  
+  .food-description {
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .food-ingredients {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .food-ingredients h6 {
+    color: orange;
+    margin-bottom: 10px;
+  }
+
+  </style>
+  <!-- AOS CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="70" tabindex="0" class="pt-5">
+
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+  <div class="container d-flex justify-content-between align-items-center">
+
+    <!-- Brand Left -->
+    <a class="navbar-brand fst-italic" href="#">Feane</a>
+
+    <!-- Toggler for mobile -->
+    <button class="navbar-toggler bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+   <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+  <ul class="navbar-nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="#Home">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#Menu">Menu</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#About">About</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#book-table">Book Table</a>
+  </li>
+</ul>
+
+</div>
+      <!-- Icons + Button on Right -->
+      <div class="d-flex align-items-center ms-auto">
+        <i class="bi bi-search text-white me-3 fs-5"></i>
+        <i class="bi bi-cart-fill text-white me-2 fs-5"></i>
+        <a href="#" class="btn btn-order">Order Online</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- Navbar End -->
+
+<section id="Home" class="hero-section text-white d-flex align-items-center" style="background: url(hero-bg.jpg) no-repeat center center/cover; height: 100vh; margin-top: 0;">
+  <div class="container text-left">
+    <div id="heroCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
+
+      <!-- Carousel Inner -->
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <h1 class="display-3 fw-bold">Welcome to <span style="color: orange;">Feane</span></h1>
+          <p class="lead mt-3">Delicious food, delivered hot and fresh right to your door!</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <h1 class="display-3 fw-bold">Experience <span style="color: orange;">Tasty Meals</span></h1>
+          <p class="lead mt-3">Freshly prepared with love and top quality ingredients.</p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <h1 class="display-3 fw-bold">Order from <span style="color: orange;">Anywhere</span></h1>
+          <p class="lead mt-3">Fast delivery, excellent service, anytime you need it.</p>
+        </div>
+      </div>
+
+      <!-- Explore Button -->
+      <a href="#" class="btn btn-order mt-4">Explore Menu</a>
+
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators position-static mt-lg-3 d-flex justify-content-lg-start m-lg-4">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Hero Section End -->
+<!-- Discount Cards Section Start -->
+<section class="discount-section py-5 bg-light">
+  <div class="container">
+    <div class="row g-4 justify-content-center">
+
+      <!-- Discount Card 1 -->
+      <div class="col-md-5">
+        <div class="discount-card d-flex flex-row-reverse align-items-center p-4 rounded shadow-sm" style="background: #fdf3e7; gap: 20px;">
+          <!-- Rounded Image on Right -->
+          <img src="card1.jpg" alt="Discount 20%" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+          
+          <!-- Text on Left -->
+          <div class="text-start">
+            <h3 class="fw-bold mb-3" style="color: #f78e1e;">20% Off</h3>
+            <p class="mb-3 text-muted">Get 20% discount on all orders above $50. Enjoy fresh meals delivered to your doorstep.</p>
+            <a href="#" class="btn btn-order px-4">Order Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discount Card 2 -->
+      <div class="col-md-5">
+        <div class="discount-card d-flex flex-row-reverse align-items-center p-4 rounded shadow-sm" style="background: #f9f7f4; gap: 20px;">
+          <!-- Rounded Image on Right -->
+          <img src="card2.jpg" alt="Free Delivery" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+          
+          <!-- Text on Left -->
+          <div class="text-start">
+            <h3 class="fw-bold mb-3" style="color: #f78e1e;">Free Delivery</h3>
+            <p class="mb-3 text-muted">Enjoy free delivery on all orders above $30. Fast and reliable service guaranteed.</p>
+            <a href="#" class="btn btn-order px-4">Get It Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Discount Cards Section End -->
+<section id="Menu" class="menu-section py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h6 class="text-uppercase" style="color: orange;">Menu</h6>
+      <h2 class="fw-bold">Explore Our Delicious Menu</h2>
+    </div>
+
+    <!-- Menu Items Grid -->
+    <div class="row g-4" id="menu-items">
+
+      <!-- Menu Item 1 -->
+      <div class="col-md-6 col-lg-4 menu-item" data-category="main">
+        <div class="card border-0 shadow-sm h-100 d-flex flex-column" data-bs-toggle="modal" data-bs-target="#foodModal" 
+             data-food-name="Bruschetta" 
+             data-food-price="$14.99" 
+             data-food-img="burrata.jpg"
+             data-food-desc="Fresh grilled bread with ripe tomatoes, garlic, and basil — an Italian classic that's perfect as an appetizer or light meal. Our version uses artisanal bread brushed with extra virgin olive oil and grilled to perfection."
+             data-food-ingredients="Artisanal bread, Fresh tomatoes, Garlic, Basil leaves, Extra virgin olive oil, Sea salt">
+          <img src="burrata.jpg" class="card-img-top rounded" alt="Bruschetta">
+          <div class="card-body d-flex flex-column flex-grow-1">
+            <h5 class="card-title fw-bold">Bruschetta</h5>
+            <p class="card-text text-muted flex-grow-1">Grilled bread topped with tomatoes, garlic, and basil.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="fw-bold">$14.99</span>
+              <a href="#" class="btn btn-sm btn-order">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Item 2 -->
+      <div class="col-md-6 col-lg-4 menu-item" data-category="main">
+        <div class="card border-0 shadow-sm h-100 d-flex flex-column" data-bs-toggle="modal" data-bs-target="#foodModal"
+             data-food-name="Grilled Salmon" 
+             data-food-price="$22.99" 
+             data-food-img="salman.jpg"
+             data-food-desc="Premium Atlantic salmon grilled to perfection and served with lemon butter sauce. Our salmon is sustainably sourced and seasoned with our special herb blend. Served with seasonal vegetables and your choice of side."
+             data-food-ingredients="Atlantic salmon, Lemon, Butter, Fresh herbs, Olive oil, Seasonal vegetables">
+          <img src="salman.jpg" class="card-img-top rounded" alt="Grilled Salmon">
+          <div class="card-body d-flex flex-column flex-grow-1">
+            <h5 class="card-title fw-bold">Grilled Salmon</h5>
+            <p class="card-text text-muted flex-grow-1">Fresh salmon with lemon butter sauce.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="fw-bold">$22.99</span>
+              <a href="#" class="btn btn-sm btn-order">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Item 3 -->
+      <div class="col-md-6 col-lg-4 menu-item" data-category="desserts">
+        <div class="card border-0 shadow-sm h-100 d-flex flex-column" data-bs-toggle="modal" data-bs-target="#foodModal"
+             data-food-name="Cheesecake" 
+             data-food-price="$8.99" 
+             data-food-img="cheese cake.jpg"
+             data-food-desc="Creamy New York-style cheesecake on a graham cracker crust, topped with fresh cream. Our signature dessert made with premium cream cheese and a touch of vanilla. Available with optional berry compote topping."
+             data-food-ingredients="Cream cheese, Graham crackers, Sugar, Eggs, Vanilla extract, Heavy cream">
+          <img src="cheese cake.jpg" class="card-img-top rounded" alt="Cheesecake">
+          <div class="card-body d-flex flex-column flex-grow-1">
+            <h5 class="card-title fw-bold">Cheesecake</h5>
+            <p class="card-text text-muted flex-grow-1">Classic New York-style cheesecake.</p>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+              <span class="fw-bold">$8.99</span>
+              <a href="#" class="btn btn-sm btn-order">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Food Modal -->
+<div class="modal fade" id="foodModal" tabindex="-1" aria-labelledby="foodModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <img id="modalFoodImg" src="" class="modal-food-img" alt="Food Image">
+          </div>
+          <div class="col-md-6">
+            <h3 class="modal-title" id="modalFoodName"></h3>
+            <div class="food-price mb-3" id="modalFoodPrice"></div>
+            <div class="food-description" id="modalFoodDesc"></div>
+            <div class="food-ingredients">
+              <h6>Ingredients</h6>
+              <p id="modalFoodIngredients"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer align-self-end">
+       
+        <button type="button" class="btn btn-order ">Add to Order</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About Section -->
+<section id="About" class="about-section py-5">
+  <div class="container">
+    <div class="row align-items-center gy-4">
+      <div class="col-lg-6">
+        <img src="resturant pic 2.jpg" class="img-fluid rounded" style="max-width: 100%; height: auto;" alt="About Image">
+      </div>
+      <div class="col-lg-6">
+        <h6 class="text-uppercase" style="color: orange;">About Us</h6>
+        <h2 class="fw-bold mb-4">Discover Our Story & Passion for Food</h2>
+        <p class="text-muted mb-4">
+          At Feane, we believe in delivering exceptional culinary experiences with fresh ingredients and love in every dish. Our chefs craft each meal to perfection, blending tradition with innovation. Whether dining in or ordering online, your satisfaction is our top priority.
+        </p>
+        <a href="#" class="btn btn-outline-orange px-4">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Book A Table Section -->
+<section class="py-5 bg-light" id="book-table">
+  <div class="container">
+    <div class="row g-5">
+      <!-- Left: Booking Form -->
+      <div class="col-lg-6">
+        <h2 class="fw-bold mb-4 text-black">BOOK A TABLE</h2>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="your.email@example.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="phone" placeholder="+92 300 1234567" required>
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="date" class="form-label">Date</label>
+              <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="col-md-6">
+              <label for="time" class="form-label">Time</label>
+              <input type="time" class="form-control" id="time" required>
+            </div>
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="guests" class="form-label">Number of Guests</label>
+            <select id="guests" class="form-select" required>
+              <option selected disabled>Select guests</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5+</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="requests" class="form-label">Special Requests</label>
+            <textarea class="form-control" id="requests" rows="4" placeholder="Any special requests?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark">Book Now</button>
+        </form>
+      </div>
+
+      <!-- Right: Map or Image -->
+      <div class="col-lg-6"data-aos="fade-up">
+         <h2 class="fw-bold mb-4 text-black">Where to Find Us</h2>
+       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3400.60086099655!2d74.34149647482865!3d31.535120746414467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391905ed135c2411%3A0xa498667b71ed0067!2sHigh%20Q%20Tower!5e0!3m2!1sen!2s!4v1754409017481!5m2!1sen!2s" class="mt-5" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="Testimonial" class="py-5" data-aos="fade-left" data-aos-duration="1000">
+  <div class="container">
+    <div class="section-title text-center mb-5">
+      <h2>Testimonials</h2>
+      <p>What Says Our Customers</p>
+    </div>
+
+    <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Testimonial 1 -->
+        <div class="carousel-item active text-center">
+          <img src="testimonial1.jpg" class="rounded-circle mb-3" alt="Client 1" style="width: 100px; height: 100px; object-fit: cover;">
+          <h5>Sarah Lee</h5>
+          <p class="text-muted">Chef</p>
+          <p class="px-4">"Amazing food and super fast service. I love their pizza, it's the best in town!"</p>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="carousel-item text-center">
+          <img src="testimonial3.jpg" class="rounded-circle mb-3" alt="Client 2" style="width: 100px; height: 100px; object-fit: cover;">
+          <h5>Ahmed Khan</h5>
+          <p class="text-muted">foodie</p>
+          <p class="px-4">"Highly recommend! Friendly staff and a menu that never disappoints."</p>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="carousel-item text-center">
+          <img src="testimonial2.jpg" class="rounded-circle mb-3" alt="Client 3" style="width: 100px; height: 100px; object-fit: cover;">
+          <h5> Elissa</h5>
+          <p class="text-muted">Food Blogger</p>"Every visit to this restaurant is a pleasure. The quality is consistent and fresh."</p>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="bg-dark text-white pt-5 ">
+  <div class="container text-center text-md-center">
+    <div class="row">
+      <!-- About -->
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase fw-bold mb-3">Feane</h5>
+        <p>
+          Delicious food, premium quality, and warm hospitality. Come dine with us and enjoy a memorable experience.
+        </p>
+      </div>
+
+      <!-- Opening Hours -->
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase fw-bold mb-3">Opening Hours</h5>
+        <p>Monday - Friday: 10:00 AM - 10:00 PM</p>
+        <p>Saturday - Sunday: 12:00 PM - 12:00 AM</p>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-4 mb-4">
+        <h5 class="text-uppercase fw-bold mb-3">Contact Us</h5>
+        <p><i class="bi bi-geo-alt-fill"></i> 123 Street, Lahore, Pakistan</p>
+        <p><i class="bi bi-telephone-fill"></i> +92 300 1234567</p>
+        <p><i class="bi bi-envelope-fill"></i> info@feane.com</p>
+      </div>
+    </div>
+
+    <!-- Bottom Footer -->
+    <div class="text-center pt-3 pb-3 border-top border-secondary">
+      <p class="mb-0">&copy; 2025 Feane. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // Animation duration in ms
+    once: true // Whether animation should happen only once
+  });
+
+  // Food Modal Script
+  document.addEventListener('DOMContentLoaded', function() {
+    var foodModal = document.getElementById('foodModal');
+    if (foodModal) {
+      foodModal.addEventListener('show.bs.modal', function(event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget;
+        
+        // Extract info from data-* attributes
+        var foodName = button.getAttribute('data-food-name');
+        var foodPrice = button.getAttribute('data-food-price');
+        var foodImg = button.getAttribute('data-food-img');
+        var foodDesc = button.getAttribute('data-food-desc');
+        var foodIngredients = button.getAttribute('data-food-ingredients');
+        
+        // Update the modal's content
+        document.getElementById('modalFoodName').textContent = foodName;
+        document.getElementById('modalFoodPrice').textContent = foodPrice;
+        document.getElementById('modalFoodImg').src = foodImg;
+        document.getElementById('modalFoodImg').alt = foodName;
+        document.getElementById('modalFoodDesc').textContent = foodDesc;
+        document.getElementById('modalFoodIngredients').textContent = foodIngredients;
+      });
+    }
+  });
+</script>
+
+</body>
+</html>

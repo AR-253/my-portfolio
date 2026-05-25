@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weldork - Digital Agency</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #0d6efd;
+            --secondary: #6c757d;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --accent: #fd7e14;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Custom Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        /* Navbar */
+        .navbar {
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: white !important;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--dark);
+        }
+
+        .navbar-brand span {
+            color: var(--accent);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            margin: 0 15px;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72') no-repeat center center/cover;
+            padding: 180px 0 120px;
+            position: relative;
+            color: white;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-weight: 700;
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .btn-custom {
+            padding: 12px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #e6730c;
+            border-color: #e6730c;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: white;
+            color: var(--dark);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            margin-bottom: 30px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(253, 126, 20, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon i {
+            font-size: 30px;
+            color: var(--accent);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 0;
+        }
+
+        .portfolio-filter {
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            font-weight: 500;
+            margin: 0 10px;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: var(--accent);
+        }
+
+        .portfolio-item {
+            position: relative;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .portfolio-item img {
+            transition: all 0.5s ease;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(253, 126, 20, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 15px;
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--accent);
+        }
+
+        .testimonial-rating {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 100px 0;
+        }
+
+        .team-member {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .team-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-social {
+            margin-top: 15px;
+        }
+
+        .team-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            background: var(--light);
+            color: var(--dark);
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab') no-repeat center center/cover;
+            position: relative;
+            color: white;
+        }
+
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-control {
+            height: 50px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        textarea.form-control {
+            height: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 28px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-links h4 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-links h4:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .input-group .form-control {
+            margin-bottom: 0;
+        }
+
+        .input-group .btn {
+            height: 50px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            margin-top: 50px;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-img {
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Weld<span>ork</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1>We Build Digital Products That Help Grow Businesses</h1>
+                    <p>We are team of talented designers and developers creating high quality digital products for your
+                        business growth.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#contact" class="btn btn-primary-custom btn-custom">Get Started</a>
+                        <a href="#about" class="btn btn-outline-custom btn-custom">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" class="img-fluid"
+                            alt="About Us">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2>About Us</h2>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Professional Team
+                        </li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Quality Services</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Affordable Prices
+                        </li>
+                    </ul>
+                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                        pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2>Our Services</h2>
+                    </div>
+                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h4>Web Design</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <h4>Mobile Development</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        <h4>Digital Marketing</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h4>Graphic Design</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-cart"></i>
+                        </div>
+                        <h4>E-commerce</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h4>SEO Services</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2>Our Portfolio</h2>
+                    </div>
+                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center mb-5">
+                <div class="col-auto portfolio-filter">
+                    <button class="filter-btn active" data-filter="*">All</button>
+                    <button class="filter-btn" data-filter=".web">Web Design</button>
+                    <button class="filter-btn" data-filter=".app">App Development</button>
+                    <button class="filter-btn" data-filter=".graphic">Graphic Design</button>
+                </div>
+            </div>
+            <div class="row portfolio-container">
+                <div class="col-md-4 portfolio-item web">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71" class="img-fluid"
+                        alt="Project 1">
+                    <div class="portfolio-overlay">
+                        <h4>Project Title</h4>
+                        <p>Web Design</p>
+                        <a href="#" class="text-white"><i class="bi bi-zoom-in fs-4"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 portfolio-item app">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d" class="img-fluid"
+                        alt="Project 2">
+                    <div class="portfolio-overlay">
+                        <h4>Project Title</h4>
+                        <p>App Development</p>
+                        <a href="#" class="text-white"><i class="bi bi-zoom-in fs-4"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 portfolio-item graphic">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d" class="img-fluid"
+                        alt="Project 3">
+                    <div class="portfolio-overlay">
+                        <h4>Project Title</h4>
+                        <p>Graphic Design</p>
+                        <a href="#" class="text-white"><i class="bi bi-zoom-in fs-4"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 portfolio-item web">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166" class="img-fluid"
+                        alt="Project 4">
+                    <div class="portfolio-overlay">
+                        <h4>Project Title</h4>
+                        <p>Web Design</p>
+                        <a href="#" class="text-white"><i class="bi bi-zoom-in fs-4"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 portfolio-item app">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c" class="img-fluid"
+                        alt="Project 5">
+                    <div class="portfolio-overlay">
+                        <h4>Project Title</h4>
+                        <p>App Development</p>
+                        <a href="#" class="text-white"><i class="bi bi-zoom-in fs-4"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 portfolio-item graphic">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d" class="img-fluid"
+                        alt="Project 6">
+                    <div class="portfolio-overlay">
+                        <h4>Project Title</h4>
+                        <p>Graphic Design</p>
+                        <a href="#" class="text-white"><i class="bi bi-zoom-in fs-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2>Client Testimonials</h2>
+                    </div>
+                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" class="testimonial-img"
+                            alt="Client 1">
+                        <div class="testimonial-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua."</p>
+                        <h5 class="mt-3">Sarah Johnson</h5>
+                        <p class="text-muted">CEO, TechCorp</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="testimonial-img"
+                            alt="Client 2">
+                        <div class="testimonial-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua."</p>
+                        <h5 class="mt-3">Michael Brown</h5>
+                        <p class="text-muted">Marketing Director</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="testimonial-img"
+                            alt="Client 3">
+                        <div class="testimonial-rating">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-half"></i>
+                        </div>
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua."</p>
+                        <h5 class="mt-3">Emily Davis</h5>
+                        <p class="text-muted">Founder, StartupX</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="section-title">
+                        <h2>Our Team</h2>
+                    </div>
+                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" class="team-img" alt="Team Member 1">
+                        <h4>John Doe</h4>
+                        <p class="text-muted">CEO & Founder</p>
+                        <div class="team-social">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/women/1.jpg" class="team-img" alt="Team Member 2">
+                        <h4>Jane Smith</h4>
+                        <p class="text-muted">Creative Director</p>
+                        <div class="team-social">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="team-member">
+                        <img src="https://randomuser.me/api/portraits/men/2.jpg" class="team-img" alt="Team Member 3">
+                        <h4>Robert Johnson</h4>
+                        <p class="text-muted">Lead Developer</p>
+                        <div class="team-social">
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center contact-content">
+                    <div class="section-title">
+                        <h2>Contact Us</h2>
+                    </div>
+                    <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="contact-info mb-5 mb-lg-0">
+                        <div class="d-flex mb-4">
+                            <div class="me-4 text-accent">
+                                <i class="bi bi-geo-alt-fill fs-3"></i>
+                            </div>
+                            <div>
+                                <h5>Location:</h5>
+                                <p>123 Street, New York, USA</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="me-4 text-accent">
+                                <i class="bi bi-envelope-fill fs-3"></i>
+                            </div>
+                            <div>
+                                <h5>Email:</h5>
+                                <p>info@example.com</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-4">
+                            <div class="me-4 text-accent">
+                                <i class="bi bi-phone-fill fs-3"></i>
+                            </div>
+                            <div>
+                                <h5>Call:</h5>
+                                <p>+1 234 567 890</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Subject">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Message" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary-custom btn-custom">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <a href="#" class="footer-logo">Weld<span>ork</span></a>
+                    <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                        incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#portfolio">Portfolio</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-links">
+                        <h4>Our Services</h4>
+                        <ul>
+                            <li><a href="#">Web Design</a></li>
+                            <li><a href="#">Web Development</a></li>
+                            <li><a href="#">Product Management</a></li>
+                            <li><a href="#">Marketing</a></li>
+                            <li><a href="#">Graphic Design</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer-links">
+                        <h4>Newsletter</h4>
+                        <p>Subscribe to our newsletter to receive updates on our latest services and offers.</p>
+                        <form class="mt-4">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Your Email">
+                                <button class="btn btn-primary-custom" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center copyright">
+                    <p class="mb-0">&copy; 2023 Weldork. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Set active nav link on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

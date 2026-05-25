@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chefer - Fixed Navigation</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Stardos+Stencil&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+     html {
+    scroll-behavior: smooth;
+  }
+    :root {
+      --bg-dark: #232428;
+      --accent: #ef5b25;
+      --muted: #bdbfc3;
+      --nav-bg: #2b2c2f;
+      --footer-bg: #232428;
+    }
+    
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: white;
+      color: #eee;
+    }
+    
+    /* Navigation Container */
+    .nav-container {
+      display: flex;
+      height: 150px;
+      width: 100%;
+    }
+    
+    /* Logo Section - Narrow */
+    .logo-section {
+      width: 250px;
+      background: orangered;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid #eee;
+    }
+    
+    .logo {
+      font-family: "Stardos Stencil", serif;
+      color: white;
+      text-align: center;
+      transform: rotate(360deg);
+      white-space: nowrap;
+    }
+    
+    .logo-main {
+      font-size: 40px;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+    
+    .logo-sub {
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: whitesmoke;
+      display: block;
+      margin-top: 5px;
+    }
+    
+    /* Right Side (Footer + Nav) */
+    .right-side {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Footer */
+   .nav-footer {
+  background: var(--footer-bg);
+  color: white;
+  padding: 0 20px;
+  height: 30%;
+  display: flex;
+  align-items: center;          /* vertically center */
+  justify-content: space-between;  /* left & right alignment */
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+    
+    /* Navigation */
+    .main-nav {
+      background: var(--nav-bg);
+      color: white;
+      padding: 0 20px;
+      height: 70%;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      justify-content: center;
+    }
+    
+    .nav-item {
+      margin: 0 15px;
+      position: relative;
+    }
+    
+    .nav-link {
+      color: white !important;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+      padding: 5px 0 !important;
+      position: relative;
+      text-decoration: none;
+    }
+    
+    .nav-link:hover {
+      color: var(--accent) !important;
+    }
+    
+    .nav-link.active {
+      color: var(--accent) !important;
+    }
+    
+    .nav-link.active:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+    }
+    
+    /* Dropdown menu */
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      background: var(--nav-bg);
+    }
+    
+    .dropdown-item {
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: white;
+    }
+    
+    .dropdown-item:hover {
+      background: var(--accent);
+      color: white;
+    }
+    
+    /* Social Icons */
+    .right-nav {
+      position: absolute;
+      right: 30px;
+      display: flex;
+    }
+    
+    .social-icon {
+      color: white;
+      font-size: 16px;
+      margin-left: 20px;
+      transition: all 0.3s;
+    }
+    
+    .social-icon:hover {
+      color: var(--accent);
+    }
+    
+    /* Mobile Toggle */
+    .navbar-toggler {
+      border: none;
+      padding: 0;
+      font-size: 24px;
+      color: white;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+    }
+    
+    .navbar-toggler:focus {
+      box-shadow: none;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .nav-container {
+        flex-direction: column;
+        height: auto;
+      }
+      
+      .logo-section {
+        width: 100%;
+        padding: 15px 0;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .logo {
+        transform: none;
+      }
+      
+      .logo-main {
+        font-size: 28px;
+      }
+      
+      .logo-sub {
+        font-size: 12px;
+        display: inline;
+        margin-left: 10px;
+        margin-top: 0;
+      }
+      
+      .navbar-toggler {
+        display: block;
+      }
+      
+      .nav-menu {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+      }
+      
+      .nav-menu.show {
+        display: flex;
+      }
+      
+      .nav-item {
+        margin: 10px 0;
+      }
+      
+      .right-nav {
+        position: static;
+        justify-content: center;
+        margin: 15px 0;
+        display: none;
+      }
+      
+      .right-nav.show {
+        display: flex;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .logo-sub {
+        display: none;
+      }
+    }
+    .hero-wrap{
+      background:var(--bg-dark);
+      padding: 40px 0 80px; /* leave space for big title overlap */
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* BIG STENCIL TITLE */
+    .hero-title{
+      position: absolute;
+      top: 25px; /* sits near top like screenshot */
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: "Stardos Stencil", serif;
+      font-size: 96px;
+      line-height: 0.9;
+      color: #dcdde0;
+      letter-spacing: 4px;
+      opacity: 0.95;
+      white-space: nowrap;
+      pointer-events:none;
+      text-align:center;
+    }
+    @media (max-width: 992px){
+      .hero-title{ font-size:64px; top:8px; }
+    }
+    @media (max-width: 576px){
+      .hero-title{ font-size:44px; top:6px; }
+    }
+
+    /* hero content area (images + text) */
+    .hero-content{
+      max-width:1100px;
+      margin: 140px auto 20px; /* push under big title */
+      display:flex;
+      gap:24px;
+      align-items:flex-start;
+      justify-content:center;
+      padding: 0 15px;
+      box-sizing:border-box;
+    }
+
+    /* column common */
+    .col-card{
+      background:transparent;
+      flex: 1 1 0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    /* left/right small image + text */
+    .small-card{
+      width:100%;
+      max-width:240px;
+      text-align:left;
+    }
+    .small-card .img-wrap{
+      width:120px;
+      height:120px;
+      overflow:hidden;
+      border-radius:6px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.6);
+      margin-bottom:16px;
+    }
+    .small-card img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    .small-card p{
+      color:var(--muted);
+      font-size:0.9rem;
+      line-height:1.45;
+      margin:0;
+    }
+
+    /* center tall chef image */
+    .center-card{
+      max-width:320px;
+      width:320px;
+      align-self:flex-start;
+      text-align:center;
+    }
+    .center-card .chef{
+      width:100%;
+      border-radius:6px;
+      overflow:hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .center-card img{ display:block; width:100%; height:auto; }
+
+    /* arrows */
+    .arrow{
+      color:var(--accent);
+      font-size:22px;
+      margin-bottom:10px;
+      display:inline-block;
+    }
+
+    /* responsiveness */
+    @media (max-width: 900px){
+      .hero-content{
+        flex-direction:column;
+        align-items:center;
+        margin-top:100px;
+      }
+      .center-card{ order: -1; } /* put chef on top on small screens */
+      .small-card{ max-width:350px; text-align:center; }
+      .small-card p{ text-align:center; }
+    }
+    .about-section {
+  background: #fff;
+  padding: 100px 0;
+}
+
+.section-title .sub-title {
+  color: #ef5b25;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.section-title .title {
+  font-family: 'Stardos Stencil', serif;
+  color: #232428;
+  margin-bottom: 30px;
+}
+
+.about-img {
+  padding-right: 30px;
+}
+.about-text{
+    color: black;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.05);
+  transition: all 0.3s;
+  border: 1px solid rgba(0,0,0,0.03);
+  padding: 40px 30px !important;
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+  width: 80px;
+  height: 80px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239, 91, 37, 0.1);
+  border-radius: 50%;
+  margin-bottom: 20px !important;
+}
+
+.feature-card h4 {
+  font-weight: 600;
+  color: #232428;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.feature-card p {
+  color: #6c757d;
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background: #ef5b25;
+  border-color: #ef5b25;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.btn-primary:hover {
+  background: #d84f1e;
+  border-color: #d84f1e;
+}
+
+/* Menu Section */
+.menu-section {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+.menu-item {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  transition: all 0.3s;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.menu-img {
+  height: 200px;
+  overflow: hidden;
+}
+
+.menu-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.menu-item:hover .menu-img img {
+  transform: scale(1.05);
+}
+
+.menu-content {
+  padding: 20px;
+}
+
+.menu-title {
+  font-weight: 600;
+  color: #232428;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.menu-price {
+  color: #ef5b25;
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.menu-desc {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+/* Chefs Section */
+.chefs-section {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.chef-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.chef-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.chef-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px; /* optional */
+}
+
+.chef-img img {
+  width: 100%;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.chef-img:hover img {
+  transform: scale(1.1);
+}
+
+.chef-info {
+  padding: 20px;
+}
+
+.chef-name {
+  font-weight: 600;
+  color: #232428;
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.chef-role {
+  color: #ef5b25;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.chef-social {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.chef-social a {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 102, 0, 0.9); /* Chefer orange */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 18px;
+  transition: background 0.3s ease;
+}
+
+.chef-social a:hover {
+  background: #ff3300; /* darker orange on hover */
+}
+.chef-img:hover .chef-social {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Testimonial Section */
+.testimonial-section {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.testimonial-card:after {
+  content: '\201D';
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 60px;
+  color: rgba(239, 91, 37, 0.1);
+  font-family: serif;
+  line-height: 1;
+}
+
+.testimonial-text {
+  color: #6c757d;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.testimonial-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.testimonial-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-name {
+  font-weight: 600;
+  color: #232428;
+  margin-bottom: 5px;
+}
+
+.testimonial-role {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.contact-info {
+  margin-bottom: 30px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(239, 91, 37, 0.1);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  color: #ef5b25;
+  font-size: 20px;
+}
+
+.contact-text h5 {
+  font-weight: 600;
+  color: #232428;
+  margin-bottom: 5px;
+}
+
+.contact-text p {
+  color: #6c757d;
+  margin-bottom: 0;
+}
+
+.contact-form .form-control {
+  height: 50px;
+  border-radius: 0;
+  margin-bottom: 20px;
+}
+
+.contact-form textarea.form-control {
+  height: auto;
+}
+
+.contact-form .btn {
+  width: 100%;
+}
+
+/* Footer */
+.footer {
+  background: var(--footer-bg);
+  color: #fff;
+  padding: 60px 0 0;
+}
+
+.footer-logo {
+  font-family: "Stardos Stencil", serif;
+  color: white;
+  font-size: 30px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.footer-about p {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-social a {
+  color: white;
+  font-size: 18px;
+  transition: all 0.3s;
+}
+
+.footer-social a:hover {
+  color: var(--accent);
+}
+
+.footer-title {
+  font-weight: 600;
+  color: white;
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+  padding-left: 5px;
+}
+
+.footer-contact p {
+  color: var(--muted);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.footer-contact i {
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+.footer-bottom {
+  background: #1a1a1d;
+  padding: 20px 0;
+  margin-top: 40px;
+}
+
+.footer-bottom p {
+  color: var(--muted);
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: #d84f1e;
+  color: white;
+}
+.feature-card {
+  background: #fff; /* ensures shadow is visible */
+  border-radius: 10px; /* smooth corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* smooth hover effect */
+}
+
+.feature-card:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* stronger shadow on hover */
+  transform: translateY(-5px); /* slight lift effect */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Container -->
+  <div class="nav-container">
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <div class="logo">
+        <span class="logo-main">CHEFER</span>
+        <span class="logo-sub">RESTAURANT</span>
+      </div>
+    </div>
+    
+    <!-- Right Side -->
+    <div class="right-side">
+      <!-- Footer -->
+      <div class="nav-footer">
+       <div>abc@123</div> 
+        <div class="text-end">+912345679</div>
+      </div>
+      
+      <!-- Navigation -->
+      <nav class="main-nav">
+        <button class="navbar-toggler" type="button" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-menu" id="navMenu">
+          <li class="nav-item">
+        <a class="nav-link active" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="#menu">Menu</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="#chefs">Chefs</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              Pages
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Feature </a></li>
+              <li><a class="dropdown-item" href="#">Blog post </a></li>
+              <li><a class="dropdown-item" href="#">Testimonials</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Error 404</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+        
+        <div class="right-nav" id="rightNav">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-wrap">
+    <div class="hero-title">John Doe</div>
+
+    <div class="hero-content">
+      <!-- left small -->
+      <div class="col-card">
+        <div class="small-card">
+          <div class="img-wrap mx-auto">
+            <!-- small left image -->
+            <img src="hero 2.jpg" alt="left-dish">
+          </div>
+
+          <div class="arrow text-center" style="transform: rotate(180deg);">↑</div>
+
+          <p>
+            Aliquam euismod, massa at cursus volutpat, nibh massa viverra velit. Donec sit amet arcu id mi suscipit.
+          </p>
+        </div>
+      </div>
+
+      <!-- center tall chef -->
+      <div class="col-card">
+        <div class="center-card">
+          <div class="chef">
+            <img src="main hero.jpg" alt="chef">
+          </div>
+        </div>
+      </div>
+
+      <!-- right small -->
+      <div class="col-card">
+        <div class="small-card">
+          <p>
+            Curabitur dictum quam eu arcu volutpat, sed convallis orci aliquet. Praesent non tortor ac orci.
+          </p>
+           <div class="arrow text-center">↑</div>
+           <div class="img-wrap mx-auto">
+            <!-- small right image -->
+            <img src="hero1.jpg" alt="right-dish">
+          </div>
+        </div>
+      </div>
+    </div> <!-- /.hero-content -->
+  </section>
+
+  <!-- About Section -->
+  <section  id="about"class= "about-section py-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="about-img position-relative">
+            <img src="about img.jpg" alt="About" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="section-title">
+            <span class="sub-title">About Us</span>
+            <h2 class="title">Welcome to Chefer Restaurant</h2>
+          </div>
+          <p class="about-text">
+            Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet
+          </p>
+          <div class="about-features row g-4 mt-4">
+            <div class="col-md-6">
+              <div class="feature-card p-4 h-100">
+                <div class="feature-icon mb-3">
+                  <i class="fas fa-user-tie fa-2x text-primary"></i>
+                </div>
+                <h4 class="mb-3">Professional Chefs</h4>
+                <p class="mb-0">Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="feature-card p-4 h-100">
+                <div class="feature-icon mb-3">
+                  <i class="fas fa-utensils fa-2x text-primary"></i>
+                </div>
+                <h4 class="mb-3">Quality Food</h4>
+                <p class="mb-0">Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <div class="section-title text-center">
+        <span class="sub-title">Our Menu</span>
+        <h2 class="title">Delicious Food Menu</h2>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="menu-item">
+            <div class="menu-img">
+              <img src="chicken burger.jpg" alt="Menu Item">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-title">Chicken Burger</h3>
+              <div class="menu-price">$12.99</div>
+              <p class="menu-desc">Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="menu-item">
+            <div class="menu-img">
+              <img src="special pizza.jpg" alt="Menu Item">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-title">Special Pizza</h3>
+              <div class="menu-price">$15.99</div>
+              <p class="menu-desc">Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="menu-item">
+            <div class="menu-img">
+              <img src="Pasta Italiano.jpg" alt="Menu Item">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-title">Pasta Italiano</h3>
+              <div class="menu-price">$14.99</div>
+              <p class="menu-desc">Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="menu-item">
+            <div class="menu-img">
+              <img src="salman.jpg" alt="Menu Item">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-title">Grilled Salmon</h3>
+              <div class="menu-price">$18.99</div>
+              <p class="menu-desc">Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="menu-item">
+            <div class="menu-img">
+              <img src="Beef Steak.jpg" alt="Menu Item">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-title">Beef Steak</h3>
+              <div class="menu-price">$22.99</div>
+              <p class="menu-desc">Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="menu-item">
+            <div class="menu-img">
+              <img src="Vegetable Salad.jpg" alt="Menu Item">
+            </div>
+            <div class="menu-content">
+              <h3 class="menu-title">Vegetable Salad</h3>
+              <div class="menu-price">$9.99</div>
+              <p class="menu-desc">Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chefs Section -->
+<section id="chefs" class="chefs-section">
+  <div class="container">
+    <div class="section-title text-center">
+      <span class="sub-title">Our Chefs</span>
+      <h2 class="title">Meet Our Professional Chefs</h2>
+    </div>
+    
+    <div class="row">
+
+      <!-- Chef 1 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="chef-card">
+          <div class="chef-img">
+            <img src="john doe.jpg" alt="Chef John">
+            <div class="chef-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="chef-info">
+            <h3 class="chef-name">John Doe</h3>
+            <p class="chef-role">Head Chef</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chef 2 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="chef-card">
+          <div class="chef-img">
+            <img src="john doe 2.jpg" alt="Chef John">
+            <div class="chef-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="chef-info">
+            <h3 class="chef-name">John Doe</h3>
+            <p class="chef-role">Head Chef</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chef 3 -->
+      <div class="col-lg-4 col-md-6">
+        <div class="chef-card">
+          <div class="chef-img">
+            <img src="john doe 3.jpg" alt="Chef John">
+            <div class="chef-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="chef-info">
+            <h3 class="chef-name">John Doe</h3>
+            <p class="chef-role">Head Chef</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Testimonial Section -->
+  <section class="testimonial-section">
+    <div class="container">
+      <div class="section-title text-center">
+        <span class="sub-title">Testimonial</span>
+        <h2 class="title">What Our Clients Say</h2>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="testimonial-card">
+            <p class="testimonial-text">Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor, auctor id gravida condimentum</p>
+            <div class="testimonial-author">
+              <div class="testimonial-img">
+                <img src="testimonial1.jpg" alt="Client">
+              </div>
+              <div class="testimonial-details">
+                <h5 class="testimonial-name">julia</h5>
+                <p class="testimonial-role">Profession</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="testimonial-card">
+            <p class="testimonial-text">Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor, auctor id gravida condimentum</p>
+            <div class="testimonial-author">
+              <div class="testimonial-img">
+                <img src="testimonial2.jpg" alt="Client">
+              </div>
+              <div class="testimonial-details">
+                <h5 class="testimonial-name">sara</h5>
+                <p class="testimonial-role">Profession</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="testimonial-card">
+            <p class="testimonial-text">Lorem ipsum dolor sit amet elit. Phasel nec preti mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor, auctor id gravida condimentum</p>
+            <div class="testimonial-author">
+              <div class="testimonial-img">
+                <img src="testimonial3.jpg" alt="Client">
+              </div>
+              <div class="testimonial-details">
+                <h5 class="testimonial-name">john</h5>
+                <p class="testimonial-role">Profession</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-title text-center">
+        <span class="sub-title">Contact Us</span>
+        <h2 class="title">Get In Touch</h2>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-5">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h5>Our Location</h5>
+                <p>123 Street, New York, USA</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-text">
+                <h5>Call Us</h5>
+                <p>+012 345 6789</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h5>Email Us</h5>
+                <p>info@example.com</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-text">
+                <h5>Opening Hours</h5>
+                <p>Mon-Sat: 9AM - 11PM, Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-7">
+          <form class="contact-form">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Subject">
+              </div>
+              <div class="col-md-12">
+                <textarea class="form-control" placeholder="Message" rows="5" required></textarea>
+              </div>
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-about">
+            <a href="#" class="footer-logo">CHEFER</a>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius nunc.</p>
+            <div class="footer-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-links">
+            <h3 class="footer-title">Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Our Services</a></li>
+              <li><a href="#">Menu</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-contact">
+            <h3 class="footer-title">Contact Info</h3>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Street, New York, USA</p>
+            <p><i class="fas fa-phone-alt"></i> +012 345 67890</p>
+            <p><i class="fas fa-envelope"></i> info@example.com</p>
+            <p><i class="fas fa-clock"></i> Mon-Sat: 9AM - 11PM, Sunday: Closed</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="container">
+          <p>&copy; <span id="year"></span> Chefer. All Rights Reserved. Designed by <a href="#">Ali Raza</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      const rightNav = document.getElementById('rightNav');
+      
+      navMenu.classList.toggle('show');
+      rightNav.classList.toggle('show');
+    }
+    
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Back to top button
+    const backToTopButton = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('active');
+      } else {
+        backToTopButton.classList.remove('active');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+</html>

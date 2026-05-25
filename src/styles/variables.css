@@ -1,0 +1,12 @@
+:root {
+    /* Colors */
+    --background: #0f172a;
+    --foreground: #f8fafc;
+    --primary: #8b5cf6;
+    --secondary: #0ea5e9;
+    --accent: #d946ef;
+
+    /* Fonts */
+    --font-main: 'Inter', sans-serif;
+    --font-display: 'Orbitron', sans-serif;
+}

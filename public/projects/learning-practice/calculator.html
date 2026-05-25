@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .calculator {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      width: 320px;
+      text-align: center;
+    }
+    input {
+      width: 120px;
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    .btn-group {
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    #result {
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h2>Simple Calculator</h2>
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+    
+    <div class="btn-group">
+      <button onclick="calculate('add')">Addition</button>
+      <button onclick="calculate('sub')">Subtraction</button>
+      <button onclick="calculate('mul')">Multiplication</button>
+      <button onclick="calculate('div')">Division</button>
+      <button onclick="calculate('mod')">Modulus</button>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculate(operation) {
+      let a = parseFloat(document.getElementById("num1").value);
+      let b = parseFloat(document.getElementById("num2").value);
+      let result = "";
+
+      if (isNaN(a) || isNaN(b)) {
+        result = "⚠️ Please enter both numbers!";
+      } else {
+        if (operation === "add") result = "Addition: " + (a + b);
+        if (operation === "sub") result = "Subtraction: " + (a - b);
+        if (operation === "mul") result = "Multiplication: " + (a * b);
+        if (operation === "div") result = "Division: " + (a / b);
+        if (operation === "mod") result = "Modulus: " + (a % b);
+      }
+
+      document.getElementById("result").innerHTML = result;
+    }
+  </script>
+
+</body>
+</html>

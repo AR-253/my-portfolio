@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaaba - Islamic Knowledge Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --islamic-green: #238636;
+            --gold: #D4AF37;
+            --dark-blue: #0A2540;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("khana kaba.jpg");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--dark-blue);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .navbar-brand span {
+            color: var(--gold);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: white;
+        }
+
+        /* Prayer Times */
+        .prayer-times {
+            background-color: var(--islamic-green);
+            color: white;
+            padding: 15px 0;
+        }
+
+        .prayer-time {
+            text-align: center;
+            padding: 10px;
+        }
+
+
+
+        /* Sections */
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-weight: 700;
+            color: var(--dark-blue);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Cards */
+        .islamic-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+
+        .islamic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .islamic-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .islamic-card .card-body {
+            padding: 25px;
+        }
+
+        .islamic-card .card-title {
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        /* Kaaba Facts */
+        .kaaba-facts {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .fact-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .fact-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-blue);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-logo {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-links h4 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-links h4:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            bottom: -10px;
+            left: 0;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .header {
+                padding: 80px 0;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Kaaba<span>Guide</span></a>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#namaz">Namaz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hajj">Hajj</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#umrah">Umrah</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#duas">Duas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Prayer Times -->
+    <div class="prayer-times">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-2  prayer-time">
+                    <h6>Fajr</h6>
+                    <p>5:15 AM</p>
+                </div>
+                <div class="col-md-2  prayer-time">
+                    <h6>Dhuhr</h6>
+                    <p>12:30 PM</p>
+                </div>
+                <div class="col-md-2  prayer-time ">
+                    <h6>Asr</h6>
+                    <p>3:45 PM</p>
+                </div>
+                <div class="col-md-2 prayer-time">
+                    <h6>Maghrib</h6>
+                    <p>6:20 PM</p>
+                </div>
+                <div class="col-md-2  prayer-time">
+                    <h6>Isha</h6>
+                    <p>8:00 PM</p>
+                </div>
+                <div class="col-md-2  prayer-time">
+                    <h6>Jumu'ah</h6>
+                    <p>1:15 PM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="home">
+        <div class="container">
+            <h1>Welcome to KaabaGuide</h1>
+            <p>Your comprehensive resource for Islamic knowledge including Namaz, Hajj, Umrah, Duas, and more. Learn
+                about the pillars of Islam and strengthen your faith.</p>
+            <a href="#namaz" class="btn btn-primary btn-lg">Start Learning</a>
+        </div>
+    </header>
+
+    <!-- Namaz Section -->
+    <section id="namaz" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Learn How to Pray (Namaz)</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="islamic-card">
+                        <img src="fajar.jpg" class="card-img-top" alt="Fajr Prayer">
+                        <div class="card-body">
+                            <h5 class="card-title">Fajr Prayer</h5>
+                            <p class="card-text">Learn the proper way to perform the Fajr prayer with step-by-step
+                                instructions and video demonstrations.</p>
+                            <a href="#" class="btn btn-primary">Learn Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="islamic-card">
+                        <img src="jummah prayer.jpeg" class="card-img-top" alt="Dhuhr Prayer">
+                        <div class="card-body">
+                            <h5 class="card-title">Jummah Prayer</h5>
+                            <p class="card-text">Detailed guide to performing the Jummah prayer including sunnah prayers
+                                and recommended duas.</p>
+                            <a href="#" class="btn btn-primary">Learn Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="islamic-card">
+                        <img src="jummah prayer.jpeg" class="card-img-top" alt="Complete Salah Guide">
+                        <div class="card-body">
+                            <h5 class="card-title">Complete Salah Guide</h5>
+                            <p class="card-text">A comprehensive guide to all five daily prayers with translations and
+                                explanations of each step.</p>
+                            <a href="#" class="btn btn-primary">Learn Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hajj Section -->
+    <section id="hajj" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Hajj Pilgrimage</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="islamic-card">
+                        <img src="hajj guide.jpg" class="card-img-top" alt="Hajj Steps">
+                        <div class="card-body">
+                            <h5 class="card-title">Step-by-Step Hajj Guide</h5>
+                            <p class="card-text">Complete guide to performing Hajj with detailed instructions for each
+                                day of the pilgrimage.</p>
+                            <a href="#" class="btn btn-primary">View Guide</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="islamic-card">
+                        <img src="hajj preparation.jpg" class="card-img-top" alt="Hajj Preparation">
+                        <div class="card-body">
+                            <h5 class="card-title">Hajj Preparation</h5>
+                            <p class="card-text">Everything you need to know before going for Hajj - documents, packing
+                                list, health tips, and more.</p>
+                            <a href="#" class="btn btn-primary">Prepare Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="islamic-card">
+                        <img src="hajj dua.jpg" class="card-img-top" alt="Hajj Duas">
+                        <div class="card-body">
+                            <h5 class="card-title">Hajj Duas</h5>
+                            <p class="card-text">Essential duas to recite during Hajj with translations and audio
+                                pronunciations.</p>
+                            <a href="#" class="btn btn-primary">Learn Duas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="islamic-card">
+                        <img src="history of hajj.jpg" class="card-img-top" alt="Hajj History">
+                        <div class="card-body">
+                            <h5 class="card-title">History of Hajj</h5>
+                            <p class="card-text">Learn about the origins of Hajj from Prophet Ibrahim (AS) to the
+                                present day.</p>
+                            <a href="#" class="btn btn-primary">Read History</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="islamic-card">
+                        <img src="hajj videos.jpg" class="card-img-top" alt="Hajj Videos">
+                        <div class="card-body">
+                            <h5 class="card-title">Hajj Videos</h5>
+                            <p class="card-text">Watch high-quality videos explaining each step of Hajj with visual
+                                demonstrations.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Umrah Section -->
+    <section id="umrah" class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2>Umrah Guide</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="islamic-card">
+                        <img src="umrah steps.png" class="card-img-top" alt="Umrah Steps">
+                        <div class="card-body">
+                            <h5 class="card-title">Umrah Step-by-Step</h5>
+                            <p class="card-text">Complete guide to performing Umrah with detailed instructions for each
+                                part of the pilgrimage.</p>
+                            <a href="#" class="btn btn-primary">View Guide</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="islamic-card">
+                        <img src="umrah preparation.jpg" class="card-img-top" alt="Umrah Preparation">
+                        <div class="card-body">
+                            <h5 class="card-title">Umrah Preparation</h5>
+                            <p class="card-text">Everything you need to know before going for Umrah - documents, packing
+                                list, and tips.</p>
+                            <a href="#" class="btn btn-primary">Prepare Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="islamic-card">
+                        <img src="umrah dua.jpg" class="card-img-top" alt="Umrah Duas">
+                        <div class="card-body">
+                            <h5 class="card-title">Umrah Duas</h5>
+                            <p class="card-text">Essential duas to recite during Umrah with translations and audio
+                                pronunciations.</p>
+                            <a href="#" class="btn btn-primary">Learn Duas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Duas Section -->
+    <section id="duas" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Daily Duas</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="islamic-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Morning Duas</h5>
+                            <p class="card-text">Essential duas to recite in the morning for protection and blessings.
+                            </p>
+                            <a href="#" class="btn btn-primary">View Duas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="islamic-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Evening Duas</h5>
+                            <p class="card-text">Important duas to recite in the evening for protection and gratitude.
+                            </p>
+                            <a href="#" class="btn btn-primary">View Duas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="islamic-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Prayer Duas</h5>
+                            <p class="card-text">Duas to recite before, during, and after salah for maximum benefit.</p>
+                            <a href="#" class="btn btn-primary">View Duas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="islamic-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Quranic Duas</h5>
+                            <p class="card-text">Powerful duas from the Quran for various needs and situations.</p>
+                            <a href="#" class="btn btn-primary">View Duas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kaaba Facts -->
+    <section class="kaaba-facts">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Facts About the Kaaba</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="fact-item">
+                        <div class="fact-icon">
+                            <i class="bi bi-house"></i>
+                        </div>
+                        <h4>House of Allah</h4>
+                        <p>The Kaaba is known as "Baitullah" (House of Allah) and is the holiest site in Islam.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="fact-item">
+                        <div class="fact-icon">
+                            <i class="bi bi-arrow-repeat"></i>
+                        </div>
+                        <h4>Rebuilt Several Times</h4>
+                        <p>The Kaaba has been reconstructed up to 12 times throughout history.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="fact-item">
+                        <div class="fact-icon">
+                            <i class="bi bi-compass"></i>
+                        </div>
+                        <h4>Qibla Direction</h4>
+                        <p>Muslims worldwide face the Kaaba during prayers, making it the Qibla.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="fact-item">
+                        <div class="fact-icon">
+                            <i class="bi bi-gem"></i>
+                        </div>
+                        <h4>Black Stone</h4>
+                        <p>The Hajar al-Aswad (Black Stone) is believed to have come from Paradise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="section-title text-start">
+                        <h2>About KaabaGuide</h2>
+                    </div>
+                    <p>KaabaGuide is dedicated to providing authentic Islamic knowledge to Muslims worldwide. Our
+                        mission is to make learning about Islam easy and accessible for everyone.</p>
+                    <p>We provide comprehensive guides on:</p>
+                    <ul>
+                        <li>How to perform Salah (Namaz) correctly</li>
+                        <li>Complete Hajj and Umrah guides</li>
+                        <li>Daily duas and supplications</li>
+                        <li>Islamic practices and etiquette</li>
+                    </ul>
+                    <p>All our content is verified by Islamic scholars to ensure authenticity and accuracy according to
+                        the Quran and Sunnah.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="about kaba.jpg" class="img-fluid rounded" alt="About KaabaGuide">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <a href="#" class="footer-logo">Kaaba<span>Guide</span></a>
+                    <p class="mt-3">Your comprehensive resource for authentic Islamic knowledge including Namaz, Hajj,
+                        Umrah, Duas, and more.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#namaz">Namaz</a></li>
+                            <li><a href="#hajj">Hajj</a></li>
+                            <li><a href="#umrah">Umrah</a></li>
+                            <li><a href="#duas">Duas</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-links">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Quran</a></li>
+                            <li><a href="#">Hadith</a></li>
+                            <li><a href="#">Fiqh</a></li>
+                            <li><a href="#">Seerah</a></li>
+                            <li><a href="#">Islamic History</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="footer-links">
+                        <h4>Newsletter</h4>
+                        <p>Subscribe to receive daily Islamic reminders, duas, and educational content.</p>
+                        <form class="mt-4">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Your Email">
+                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center copyright">
+                    <p class="mb-0">&copy; 2025 KaabaGuide. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS (required for Bootstrap components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
